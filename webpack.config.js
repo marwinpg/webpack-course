@@ -6,10 +6,13 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
+    filename: "[name].[contenthash].js",
   },
   resolve: {
     extensions: [".js"],
+  },
+  optimization: {
+    minimize: true,
   },
   module: {
     rules: [
@@ -51,6 +54,8 @@ module.exports = {
       template: "./public/index.html",
       filename: "./index.html",
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "assets/[name].[contenthash].css",
+    }),
   ],
 };
