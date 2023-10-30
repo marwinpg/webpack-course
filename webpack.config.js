@@ -28,6 +28,13 @@ module.exports = {
         test: /\.(css|styl)$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "stylus-loader"],
       },
+      {
+        test: /\.png$/,
+        type: "asset/resource",
+        generator: {
+          filename: "assets/images/[hash][ext][query]",
+        },
+      },
     ],
   },
   plugins: [
